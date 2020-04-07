@@ -6,3 +6,10 @@
     * **Test**: contiene programa ejemplo sin el uso de la libreria _glad_.
     * **First_program**: programa ejemplo usando _glad_.
 
+### Para ejecución:
+#### First program:
+```plain
+cmake .
+make
+./nombre_ejecutable
+```
