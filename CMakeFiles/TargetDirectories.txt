@@ -1,6 +1,6 @@
 /home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/CMakeFiles/rebuild_cache.dir
-/home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/CMakeFiles/con.dir
 /home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/CMakeFiles/edit_cache.dir
+/home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/CMakeFiles/main.dir
 /home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/CMakeFiles/glad.dir
 /home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/dependences/glfw-3.3.2/CMakeFiles/rebuild_cache.dir
 /home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/dependences/glfw-3.3.2/CMakeFiles/edit_cache.dir

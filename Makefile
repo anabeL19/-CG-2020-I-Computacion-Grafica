@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named con
+# Target rules for targets named main
 
 # Build rule for target.
-con: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 con
-.PHONY : con
+main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 main
+.PHONY : main
 
 # fast build rule for target.
-con/fast:
-	$(MAKE) -f CMakeFiles/con.dir/build.make CMakeFiles/con.dir/build
-.PHONY : con/fast
+main/fast:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
+.PHONY : main/fast
 
 #=============================================================================
 # Target rules for targets named glad
@@ -176,32 +176,32 @@ dependences/glad/src/glad.c.s:
 	$(MAKE) -f CMakeFiles/glad.dir/build.make CMakeFiles/glad.dir/dependences/glad/src/glad.c.s
 .PHONY : dependences/glad/src/glad.c.s
 
-src/First_program/con_glad.o: src/First_program/con_glad.cpp.o
+src/Triangle/triangle.o: src/Triangle/triangle.cpp.o
 
-.PHONY : src/First_program/con_glad.o
+.PHONY : src/Triangle/triangle.o
 
 # target to build an object file
-src/First_program/con_glad.cpp.o:
-	$(MAKE) -f CMakeFiles/con.dir/build.make CMakeFiles/con.dir/src/First_program/con_glad.cpp.o
-.PHONY : src/First_program/con_glad.cpp.o
+src/Triangle/triangle.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Triangle/triangle.cpp.o
+.PHONY : src/Triangle/triangle.cpp.o
 
-src/First_program/con_glad.i: src/First_program/con_glad.cpp.i
+src/Triangle/triangle.i: src/Triangle/triangle.cpp.i
 
-.PHONY : src/First_program/con_glad.i
+.PHONY : src/Triangle/triangle.i
 
 # target to preprocess a source file
-src/First_program/con_glad.cpp.i:
-	$(MAKE) -f CMakeFiles/con.dir/build.make CMakeFiles/con.dir/src/First_program/con_glad.cpp.i
-.PHONY : src/First_program/con_glad.cpp.i
+src/Triangle/triangle.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Triangle/triangle.cpp.i
+.PHONY : src/Triangle/triangle.cpp.i
 
-src/First_program/con_glad.s: src/First_program/con_glad.cpp.s
+src/Triangle/triangle.s: src/Triangle/triangle.cpp.s
 
-.PHONY : src/First_program/con_glad.s
+.PHONY : src/Triangle/triangle.s
 
 # target to generate assembly for a file
-src/First_program/con_glad.cpp.s:
-	$(MAKE) -f CMakeFiles/con.dir/build.make CMakeFiles/con.dir/src/First_program/con_glad.cpp.s
-.PHONY : src/First_program/con_glad.cpp.s
+src/Triangle/triangle.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Triangle/triangle.cpp.s
+.PHONY : src/Triangle/triangle.cpp.s
 
 # Help Target
 help:
@@ -210,16 +210,16 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... con"
 	@echo "... edit_cache"
+	@echo "... main"
 	@echo "... glad"
 	@echo "... glfw"
 	@echo "... dependences/glad/src/glad.o"
 	@echo "... dependences/glad/src/glad.i"
 	@echo "... dependences/glad/src/glad.s"
-	@echo "... src/First_program/con_glad.o"
-	@echo "... src/First_program/con_glad.i"
-	@echo "... src/First_program/con_glad.s"
+	@echo "... src/Triangle/triangle.o"
+	@echo "... src/Triangle/triangle.i"
+	@echo "... src/Triangle/triangle.s"
 .PHONY : help
 
 

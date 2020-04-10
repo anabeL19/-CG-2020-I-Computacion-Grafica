@@ -53,14 +53,14 @@ CMAKE_BINARY_DIR = /home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafic
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/con.dir/all
+all: CMakeFiles/main.dir/all
 all: CMakeFiles/glad.dir/all
 all: dependences/glfw-3.3.2/all
 
 .PHONY : all
 
 # The main recursive "clean" target.
-clean: CMakeFiles/con.dir/clean
+clean: CMakeFiles/main.dir/clean
 clean: CMakeFiles/glad.dir/clean
 clean: dependences/glfw-3.3.2/clean
 
@@ -72,32 +72,32 @@ preinstall: dependences/glfw-3.3.2/preinstall
 .PHONY : preinstall
 
 #=============================================================================
-# Target rules for target CMakeFiles/con.dir
+# Target rules for target CMakeFiles/main.dir
 
 # All Build rule for target.
-CMakeFiles/con.dir/all: CMakeFiles/glad.dir/all
-CMakeFiles/con.dir/all: dependences/glfw-3.3.2/src/CMakeFiles/glfw.dir/all
-	$(MAKE) -f CMakeFiles/con.dir/build.make CMakeFiles/con.dir/depend
-	$(MAKE) -f CMakeFiles/con.dir/build.make CMakeFiles/con.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/CMakeFiles --progress-num=1,2 "Built target con"
-.PHONY : CMakeFiles/con.dir/all
+CMakeFiles/main.dir/all: CMakeFiles/glad.dir/all
+CMakeFiles/main.dir/all: dependences/glfw-3.3.2/src/CMakeFiles/glfw.dir/all
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/depend
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/CMakeFiles --progress-num=20,21 "Built target main"
+.PHONY : CMakeFiles/main.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/con.dir/rule: cmake_check_build_system
+CMakeFiles/main.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/CMakeFiles 21
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/con.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/main.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/CMakeFiles 0
-.PHONY : CMakeFiles/con.dir/rule
+.PHONY : CMakeFiles/main.dir/rule
 
 # Convenience name for target.
-con: CMakeFiles/con.dir/rule
+main: CMakeFiles/main.dir/rule
 
-.PHONY : con
+.PHONY : main
 
 # clean rule for target.
-CMakeFiles/con.dir/clean:
-	$(MAKE) -f CMakeFiles/con.dir/build.make CMakeFiles/con.dir/clean
-.PHONY : CMakeFiles/con.dir/clean
+CMakeFiles/main.dir/clean:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/clean
+.PHONY : CMakeFiles/main.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/glad.dir
@@ -106,7 +106,7 @@ CMakeFiles/con.dir/clean:
 CMakeFiles/glad.dir/all:
 	$(MAKE) -f CMakeFiles/glad.dir/build.make CMakeFiles/glad.dir/depend
 	$(MAKE) -f CMakeFiles/glad.dir/build.make CMakeFiles/glad.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/CMakeFiles --progress-num=3,4 "Built target glad"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/CMakeFiles --progress-num=1,2 "Built target glad"
 .PHONY : CMakeFiles/glad.dir/all
 
 # Build rule for subdir invocation for target.
@@ -169,7 +169,7 @@ dependences/glfw-3.3.2/src/preinstall:
 dependences/glfw-3.3.2/src/CMakeFiles/glfw.dir/all:
 	$(MAKE) -f dependences/glfw-3.3.2/src/CMakeFiles/glfw.dir/build.make dependences/glfw-3.3.2/src/CMakeFiles/glfw.dir/depend
 	$(MAKE) -f dependences/glfw-3.3.2/src/CMakeFiles/glfw.dir/build.make dependences/glfw-3.3.2/src/CMakeFiles/glfw.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21 "Built target glfw"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19 "Built target glfw"
 .PHONY : dependences/glfw-3.3.2/src/CMakeFiles/glfw.dir/all
 
 # Build rule for subdir invocation for target.
