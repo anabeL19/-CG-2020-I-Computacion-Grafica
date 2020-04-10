@@ -11,7 +11,7 @@
          set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/First_program")
          set(SOURCES "${SRC_DIR}/con_glad.cpp")
      ```
-     * **Triangle**: segundo tutorial.
+     * **Triangle**: segundo tutorial con modificaciones.
      Para ejecutar cambiar en _CMakeLists.txt_:
      ```plain
          # Source files
