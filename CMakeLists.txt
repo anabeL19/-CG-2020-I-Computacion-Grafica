@@ -3,9 +3,9 @@ project(con)
 
 include_directories("/-CG-2020-I-Computacion-Grafica")
 # Source files
-set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/First_program")
+set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/Triangle")
 set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/dependences")
-set(SOURCES "${SRC_DIR}/con_glad.cpp")
+set(SOURCES "${SRC_DIR}/triangle.cpp")
 
 # Executable definition and properties
 add_executable(${PROJECT_NAME} ${SOURCES})
