@@ -57,27 +57,27 @@ include CMakeFiles/main.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/main.dir/flags.make
 
-CMakeFiles/main.dir/src/Triangle/triangle.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/Triangle/triangle.cpp.o: src/Triangle/triangle.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/src/Triangle/triangle.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/Triangle/triangle.cpp.o -c /home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/src/Triangle/triangle.cpp
+CMakeFiles/main.dir/src/Exercises/key_color_triangle.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/Exercises/key_color_triangle.cpp.o: src/Exercises/key_color_triangle.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/src/Exercises/key_color_triangle.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/Exercises/key_color_triangle.cpp.o -c /home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/src/Exercises/key_color_triangle.cpp
 
-CMakeFiles/main.dir/src/Triangle/triangle.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/Triangle/triangle.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/src/Triangle/triangle.cpp > CMakeFiles/main.dir/src/Triangle/triangle.cpp.i
+CMakeFiles/main.dir/src/Exercises/key_color_triangle.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/Exercises/key_color_triangle.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/src/Exercises/key_color_triangle.cpp > CMakeFiles/main.dir/src/Exercises/key_color_triangle.cpp.i
 
-CMakeFiles/main.dir/src/Triangle/triangle.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/Triangle/triangle.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/src/Triangle/triangle.cpp -o CMakeFiles/main.dir/src/Triangle/triangle.cpp.s
+CMakeFiles/main.dir/src/Exercises/key_color_triangle.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/Exercises/key_color_triangle.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/src/Exercises/key_color_triangle.cpp -o CMakeFiles/main.dir/src/Exercises/key_color_triangle.cpp.s
 
 # Object files for target main
 main_OBJECTS = \
-"CMakeFiles/main.dir/src/Triangle/triangle.cpp.o"
+"CMakeFiles/main.dir/src/Exercises/key_color_triangle.cpp.o"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
-main: CMakeFiles/main.dir/src/Triangle/triangle.cpp.o
+main: CMakeFiles/main.dir/src/Exercises/key_color_triangle.cpp.o
 main: CMakeFiles/main.dir/build.make
 main: dependences/glfw-3.3.2/src/libglfw3.a
 main: libglad.a

@@ -176,32 +176,32 @@ dependences/glad/src/glad.c.s:
 	$(MAKE) -f CMakeFiles/glad.dir/build.make CMakeFiles/glad.dir/dependences/glad/src/glad.c.s
 .PHONY : dependences/glad/src/glad.c.s
 
-src/Triangle/triangle.o: src/Triangle/triangle.cpp.o
+src/Exercises/key_color_triangle.o: src/Exercises/key_color_triangle.cpp.o
 
-.PHONY : src/Triangle/triangle.o
+.PHONY : src/Exercises/key_color_triangle.o
 
 # target to build an object file
-src/Triangle/triangle.cpp.o:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Triangle/triangle.cpp.o
-.PHONY : src/Triangle/triangle.cpp.o
+src/Exercises/key_color_triangle.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Exercises/key_color_triangle.cpp.o
+.PHONY : src/Exercises/key_color_triangle.cpp.o
 
-src/Triangle/triangle.i: src/Triangle/triangle.cpp.i
+src/Exercises/key_color_triangle.i: src/Exercises/key_color_triangle.cpp.i
 
-.PHONY : src/Triangle/triangle.i
+.PHONY : src/Exercises/key_color_triangle.i
 
 # target to preprocess a source file
-src/Triangle/triangle.cpp.i:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Triangle/triangle.cpp.i
-.PHONY : src/Triangle/triangle.cpp.i
+src/Exercises/key_color_triangle.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Exercises/key_color_triangle.cpp.i
+.PHONY : src/Exercises/key_color_triangle.cpp.i
 
-src/Triangle/triangle.s: src/Triangle/triangle.cpp.s
+src/Exercises/key_color_triangle.s: src/Exercises/key_color_triangle.cpp.s
 
-.PHONY : src/Triangle/triangle.s
+.PHONY : src/Exercises/key_color_triangle.s
 
 # target to generate assembly for a file
-src/Triangle/triangle.cpp.s:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Triangle/triangle.cpp.s
-.PHONY : src/Triangle/triangle.cpp.s
+src/Exercises/key_color_triangle.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Exercises/key_color_triangle.cpp.s
+.PHONY : src/Exercises/key_color_triangle.cpp.s
 
 # Help Target
 help:
@@ -217,9 +217,9 @@ help:
 	@echo "... dependences/glad/src/glad.o"
 	@echo "... dependences/glad/src/glad.i"
 	@echo "... dependences/glad/src/glad.s"
-	@echo "... src/Triangle/triangle.o"
-	@echo "... src/Triangle/triangle.i"
-	@echo "... src/Triangle/triangle.s"
+	@echo "... src/Exercises/key_color_triangle.o"
+	@echo "... src/Exercises/key_color_triangle.i"
+	@echo "... src/Exercises/key_color_triangle.s"
 .PHONY : help
 
 

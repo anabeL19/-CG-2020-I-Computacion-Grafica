@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/main.dir/src/Triangle/triangle.cpp.o"
+  "CMakeFiles/main.dir/src/Exercises/key_color_triangle.cpp.o"
   "main"
   "main.pdb"
 )

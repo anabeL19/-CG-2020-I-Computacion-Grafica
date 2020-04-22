@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/src/Triangle/triangle.cpp" "/home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/CMakeFiles/main.dir/src/Triangle/triangle.cpp.o"
+  "/home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/src/Exercises/key_color_triangle.cpp" "/home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/CMakeFiles/main.dir/src/Exercises/key_color_triangle.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -16,7 +16,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/-CG-2020-I-Computacion-Grafica"
-  "src/Triangle"
+  "src/Exercises"
   "dependences/glfw-3.3.2/include"
   "dependences/glad/include"
   )

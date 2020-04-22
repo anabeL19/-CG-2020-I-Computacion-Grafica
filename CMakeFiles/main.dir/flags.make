@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=gnu++11
 
 CXX_DEFINES = -DGLFW_INCLUDE_NONE
 
-CXX_INCLUDES = -I/-CG-2020-I-Computacion-Grafica -I/home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/src/Triangle -I/home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/dependences/glfw-3.3.2/include -I/home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/dependences/glad/include 
+CXX_INCLUDES = -I/-CG-2020-I-Computacion-Grafica -I/home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/src/Exercises -I/home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/dependences/glfw-3.3.2/include -I/home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/dependences/glad/include 
 

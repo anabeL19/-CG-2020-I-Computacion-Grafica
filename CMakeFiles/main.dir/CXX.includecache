@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/src/Triangle/triangle.cpp
+/home/lebana/Documents/CompGraf/-CG-2020-I-Computacion-Grafica/src/Exercises/key_color_triangle.cpp
 glad/glad.h
 -
 GLFW/glfw3.h
