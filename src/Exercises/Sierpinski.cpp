@@ -11,6 +11,7 @@ void processInput(GLFWwindow *window);
 // settings
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
+bool flag = true;
 
 class Vertice{
     public:
@@ -30,7 +31,6 @@ const char *vertexShaderSource = "#version 330 core\n"
     "layout (location = 0) in vec3 aPos;\n"
     // "layout (location = 1) in vec3 aColor;\n"
     "out vec3 ourColor;\n"
-    // "uniform vec4 aColor;\n"
     "void main()\n"
     "{\n"
     "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
@@ -38,11 +38,9 @@ const char *vertexShaderSource = "#version 330 core\n"
     "}\0";
 const char *fragmentShaderSource = "#version 330 core\n"
     "out vec4 FragColor;\n"
-    // "in vec3 ourColor;\n"
     "uniform vec4 ourColor;\n"
     "void main()\n"
     "{\n"
-    // "   FragColor = vec4(ourColor, 1.0f);\n"
     "   FragColor = ourColor;\n"
     "}\n\0";
 
@@ -68,6 +66,7 @@ void Shape_triangle(Vertice points[], Vertice v1, Vertice v2, Vertice v3)
 
 void Sierpinski(Vertice points[], Vertice v1, Vertice v2, Vertice v3, int degree, int &shader)
 {
+    // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     if (degree > 0) {
         Vertice aux_vert[3];
         std::cout<<"degree!!"<<degree<<"\n";
@@ -106,15 +105,13 @@ void Render(int opcion)
 int main()
 {
     // glfw: initialize and configure
-    // ------------------------------
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     // glfw window creation
-    // --------------------
-    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "SIERPINSKI", NULL, NULL);
     if (window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
@@ -126,7 +123,6 @@ int main()
     glfwSetKeyCallback(window, key_callback);
 
     // glad: load all OpenGL function pointers
-    // ---------------------------------------
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
         std::cout << "Failed to initialize GLAD" << std::endl;
@@ -134,8 +130,8 @@ int main()
     }
 
 
-    // build and compile our shader program
-    // ------------------------------------
+    // ---------------------- build and compile our shader program -----------
+    // -----------------------------------------------------------------------
     // vertex shader
     int vertexShader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
@@ -185,7 +181,8 @@ int main()
     Vertice points[nro_vert];
     points[0] = Vertice(0.25, 0.5,0);
 
-    std::cout<<"                DRAW SIERPINSKI\n";
+    //--------------------------- DRAW SIERPINSKI -----------------------------------
+    //-------------------------------------------------------------------------------
     Sierpinski(points, vertices[0], vertices[1], vertices[2], degree, shaderProgram);
 
     unsigned int VBO, VAO;
@@ -203,20 +200,19 @@ int main()
 
     glUseProgram(shaderProgram);
 
-    // uncomment this call to draw in wireframe polygons.
-    // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    std::cout<<sizeof(points)<<"\n";
-    std::cout<<sizeof(points)/9<<"\n";
     // render loop
     while (!glfwWindowShouldClose(window))
     {
         // input
-        // -----
         processInput(window);
 
         // render
-        // ------
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        // glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        float timeValue = glfwGetTime();
+		float colorValue = sin(timeValue) / 7.0f + 0.2f;
+
+		if (flag)  glClearColor(colorValue, 0.2f, 0.2f, 1.0f);
+		else    glClearColor(0.2f, 0.2f, colorValue, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
         // draw triangle
@@ -252,15 +248,11 @@ int main()
             Render(blue_value);
             glDrawArrays(GL_TRIANGLES, i, 3);
         }
-        // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-        // float timeValue = glfwGetTime();
-        // float greenValue = sin(timeValue) / 2.0f + 0.5f;
 
         // glDrawElements(GL_TRIANGLES, sizeof(points), GL_UNSIGNED_INT, 0);
         // glBindVertexArray(0); // no need to unbind it every time 
  
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
-        // -------------------------------------------------------------------------------
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
