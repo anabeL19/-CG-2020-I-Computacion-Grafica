@@ -1,7 +1,7 @@
 /* TRANSFORMACION COMPUESTA*/
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "matrix.h"
+#include "lib/matrix.h"
 #include <iostream>
 
 
