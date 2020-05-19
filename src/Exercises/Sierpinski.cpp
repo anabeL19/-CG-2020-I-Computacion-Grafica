@@ -24,7 +24,7 @@ class Vertice{
 
 int red_value=0, green_value=0, blue_value=0; 
 // float colors[] = {red_value, green_value, blue_value};
-int i=0;
+int state=0;
 int vertexColorLocation;
 
 const char *vertexShaderSource = "#version 330 core\n"
@@ -64,31 +64,27 @@ void Shape_triangle(Vertice points[], Vertice v1, Vertice v2, Vertice v3)
 
 }
 
+int degree=6;
+int nro_vert=int(pow(3, degree + 1));
+float valcolor=0.8;
+float inc = 0.04;
+
 void Sierpinski(Vertice points[], Vertice v1, Vertice v2, Vertice v3, int degree, int &shader)
 {
-    // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     if (degree > 0) {
         Vertice aux_vert[3];
-        std::cout<<"degree!!"<<degree<<"\n";
         aux_vert[0]=Get_Middle(v1, v2);
         aux_vert[1]=Get_Middle(v1, v3);
         aux_vert[2]=Get_Middle(v2, v3);
 
-        std::cout<<"1s-- " <<  " \n";
         Sierpinski(points, v1, aux_vert[0], aux_vert[1], degree-1,shader);
-        std::cout<<"2s-- " <<  "\n";
-        Sierpinski(points, v3, aux_vert[1], aux_vert[2], degree-1,shader);          
-        std::cout<<"3s-- " <<"\n";
+        Sierpinski(points, v3, aux_vert[1], aux_vert[2], degree-1,shader); 
         Sierpinski(points, v2, aux_vert[2], aux_vert[0], degree-1,shader);
     }
     else {
         Shape_triangle(points, v1, v2, v3);
     }
 }
-int degree=5;
-int nro_vert=int(pow(3, degree + 1));
-float valcolor=0.8;
-float inc = 0.004;
 
 void Render(int opcion)
 {
@@ -105,12 +101,14 @@ void Render(int opcion)
 int main()
 {
     // glfw: initialize and configure
+    // ------------------------------
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     // glfw window creation
+    // --------------------
     GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "SIERPINSKI", NULL, NULL);
     if (window == NULL)
     {
@@ -123,6 +121,7 @@ int main()
     glfwSetKeyCallback(window, key_callback);
 
     // glad: load all OpenGL function pointers
+    // ---------------------------------------
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
         std::cout << "Failed to initialize GLAD" << std::endl;
@@ -130,8 +129,8 @@ int main()
     }
 
 
-    // ---------------------- build and compile our shader program -----------
-    // -----------------------------------------------------------------------
+    // build and compile our shader program
+    // ------------------------------------
     // vertex shader
     int vertexShader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
@@ -181,8 +180,7 @@ int main()
     Vertice points[nro_vert];
     points[0] = Vertice(0.25, 0.5,0);
 
-    //--------------------------- DRAW SIERPINSKI -----------------------------------
-    //-------------------------------------------------------------------------------
+    std::cout<<"                DRAW SIERPINSKI\n";
     Sierpinski(points, vertices[0], vertices[1], vertices[2], degree, shaderProgram);
 
     unsigned int VBO, VAO;
@@ -200,6 +198,10 @@ int main()
 
     glUseProgram(shaderProgram);
 
+    // uncomment this call to draw in wireframe polygons.
+    // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    std::cout<<sizeof(points)<<"\n";
+    std::cout<<sizeof(points)/9<<"\n";
     // render loop
     while (!glfwWindowShouldClose(window))
     {
@@ -211,7 +213,7 @@ int main()
         float timeValue = glfwGetTime();
 		float colorValue = sin(timeValue) / 7.0f + 0.2f;
 
-		if (flag)  glClearColor(colorValue, 0.2f, 0.2f, 1.0f);
+		if (flag)  glClearColor(colorValue, 0.2f, 0.3f, 1.0f);
 		else    glClearColor(0.2f, 0.2f, colorValue, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
@@ -224,6 +226,7 @@ int main()
         }
         valcolor += inc;
         vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor"); 
+        // glUniformMatrix4fv(vertexColorLocation, 1, GL_FALSE, glm::value_ptr(finalTransform));
         // glUniform4f(vertexColorLocation, 0.35f, green_value, 0.75f, 1.0f);
         glUniform4f(vertexColorLocation, 0.0f, valcolor, 0.0f, 1.0f);
         glDrawArrays(GL_TRIANGLES, 0, nro_vert/3);
@@ -248,11 +251,10 @@ int main()
             Render(blue_value);
             glDrawArrays(GL_TRIANGLES, i, 3);
         }
-
-        // glDrawElements(GL_TRIANGLES, sizeof(points), GL_UNSIGNED_INT, 0);
-        // glBindVertexArray(0); // no need to unbind it every time 
+        // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
  
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
+        // -------------------------------------------------------------------------------
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
@@ -283,17 +285,26 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-    if (key == GLFW_KEY_0 && action == GLFW_PRESS) {
-        red_value = green_value = blue_value = 0; 
+    if (state==0 && key == GLFW_KEY_0 && action == GLFW_PRESS) {
+        red_value = green_value = blue_value = 0.0; state=1;
+    }
+    else if (state==1 && key == GLFW_KEY_0 && action == GLFW_PRESS) {
+        red_value = green_value = blue_value = 1.0; state=0;
+    }
+    else if (state==0 && key == GLFW_KEY_1 && action == GLFW_PRESS) {
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); state=1;
+    }
+    else if (state==1 && key == GLFW_KEY_1 && action == GLFW_PRESS) {
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);  state=0;
     }
     else if (key == GLFW_KEY_2 && action == GLFW_PRESS) {
-        red_value = (red_value + 3) % 4;
-        green_value = (red_value + 1) % 4;
-        blue_value = (green_value + 1) % 4;
+        red_value = (red_value + 3) % 4;    green_value = (red_value + 1) % 4;  blue_value = (green_value + 1) % 4;
     }
     else if (key == GLFW_KEY_3 && action == GLFW_PRESS) {
-        red_value = (red_value + 1)%4;
-        green_value = (red_value + 1)%4;
-        blue_value = (green_value + 1)%4;
+        red_value = (red_value + 1)%4;  green_value = (red_value + 1)%4;    blue_value = (green_value + 1)%4;
     }
+    else if (key == GLFW_KEY_UP && action == GLFW_PRESS) {
+        red_value +=0.5;    green_value +=0.5;  blue_value +=0.5;
+    }
+    
 }
