@@ -33,7 +33,7 @@ const int r_v = 4;
 const int c_v = 1;
 
 //
-int i=0;
+int i=0, a=0, c=0, g=0;
 std::string shape_t= "t";
 std::string shape_s= "s";
 std::string shape_r= "r";
@@ -52,6 +52,8 @@ std::string traslation_left = "tleft";
 std::string traslation_up = "tup";
 std::string traslation_down = "tdown";
 float t=0.0;
+int t_count = 0;
+
 unsigned int VBOs[3], VAOs[3], EBOs[2];
 float vertexsTriangle[] = {
     //triangulo
@@ -68,10 +70,10 @@ float vertexsSquare[] = {
 };
 float vertexsRhombus[] = {
     //rombo
-    0.6f+t, -0.6f+t, 0.0f+t,  // top 7
-    0.6f+t, -0.9f+t, 0.0f+t,  // bottom 8 
-    0.75f+t, -0.74f+t, 0.0f+t,  // right 9
-    0.45f+t, -0.74f+t, 0.0f+t   // left 10
+    0.6f, -0.6f, 0.0f+t,  // top 7
+    0.6f, -0.9f, 0.0f+t,  // bottom 8 
+    0.75f, -0.74f, 0.0f+t,  // right 9
+    0.45f, -0.74f, 0.0f   // left 10
 };
 
 unsigned int indicesSquare[] = {
@@ -212,12 +214,13 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT);
         
         if (a_basic == true) {
-            // cout<<"var_scale "<<var_scale<<"\n";
             if ( var_scale >= 0.10 || var_scale <= -0.06) {
-                // cout<<"enter\n";
                 inc *= -1;
             }
             var_scale += inc;
+            if (t_count >= 14) {
+                t_count = 0;
+            }
             animation_basic();
         }
     
@@ -366,6 +369,8 @@ void render_matrix(Matrix &Mmain, Op &op, string option)
 
             Matrix r(Mmain.r, svtx.c);
             op.MultMatrixVector(svtx, r);
+            
+            
             vertexsRhombus[i] = r.M[0][0];
             vertexsRhombus[i+1] = r.M[1][0];
             vertexsRhombus[i+2] = r.M[2][0];
@@ -376,8 +381,8 @@ void render_matrix(Matrix &Mmain, Op &op, string option)
     }
 }
 int r_count = 0;
-int t_count = 0;
-int td_count = 0;
+
+int count = 0;
 void animation_basic ()
 {
     while ( r_count < 8) {
@@ -395,62 +400,51 @@ void animation_basic ()
         r_count++;
     }
 
-    Matrix Mt_main(4,4);
-    Mt_main.Identity();
-    Op t_op(&Mt_main);
+    // rhombus
+    Matrix Mmain(4,4);
+    Mmain.Identity();
+    Op op(&Mmain);
 
-    while (t_count < 14) {
-        Matrix Mt_main(4,4);
-        Mt_main.Identity();
+    if (t_count<4) {
+        float ini[r_v] = {0.0f, var_tras, 0.0f, 0.0f};
+        Vector v(ini, 4,1);
 
-        if ( t_count < 4) {
-            // up
-            t = var_tras;
-            float ini[r_v] = {0.0f, t, 0.0f, 0.0f};
-            Vector v(ini, 4,1);
+        op.Traslation(v);
+        t_count++;  
+    } 
+    else if ( t_count >= 4 && t_count < 7) {
+        // up
+        float ini[r_v] = {-var_tras, 0.0f, 0.0f, 0.0f};
+        Vector v(ini, 4,1);
 
-            t_op.Traslation(v);
-        }
-        else if ( t_count > 4 && t_count < 7) {
-            // left
-            t = -var_tras;
-            float ini[r_v] = {t, 0.0f, 0.0f, 0.0f};
-            Vector v(ini, 4,1);
+        op.Traslation(v);
+        t_count++;
+    } 
+    else if( t_count >= 7 && t_count < 11) {
+        // down
+        float ini[r_v] = {0.0f, -var_tras, 0.0f, 0.0f};
+        Vector v(ini, 4,1);
 
-            t_op.Traslation(v);
-            // render_matrix(Mt_main, t_op, "r");
-        }
-        else if ( t_count > 7 && t_count < 11) {
-            // down
-            t = -var_tras;
-            float ini[r_v] = {0.0f, t, 0.0f, 0.0f};
-            Vector v(ini, 4,1);
-
-            t_op.Traslation(v);
-            // render_matrix(Mt_main, t_op, "r");
-        }
-        else if ( t_count > 11 && t_count < 14) {
-            // right
-            t = var_tras;
-            float ini[r_v] = {t, 0.0f, 0.0f, 0.0f};
-            Vector v(ini, 4,1);
-
-            t_op.Traslation(v);
-            // render_matrix(Mt_main, t_op, "r");
-        }      
-        render_matrix(Mt_main, t_op, "r"); 
-        t_count++;    
-    }
-    t_count = 0;
-    while ( t_count<3 ) {
+        op.Traslation(v);
         t_count++;
     }
+    else if ( t_count >= 11 && t_count < 14) {
+        // right
+        float ini[r_v] = {var_tras, 0.0f, 0.0f, 0.0f};
+        Vector v(ini, 4,1);
 
+        op.Traslation(v);
+        t_count++;
+    }
+    render_matrix(Mmain, op, "r");
+    count = 0;
+    while ( count<3 ) {
+        count++;
+    }
     //  triangle
     Matrix Ms_main(4,4);
     Ms_main.Identity();
 
-    // cout<<"var into keys " <<var_scale<<"\n";
     float ini[r_v] = {1.0f + var_scale, 1.0f + var_scale, 1.0f + var_scale, 1.0f};
     Vector v(ini, 4,1);
 
@@ -568,48 +562,48 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
     }
 
     // BASIC ANIMATION
-    if ( i==0 && key == GLFW_KEY_A && action == GLFW_PRESS) {
-            a_basic = true;     i+=1;
+    if ( a==0 && key == GLFW_KEY_A && action == GLFW_PRESS) {
+            a_basic = true;     a+=1;
     }
-    else if ( i==1 && key == GLFW_KEY_A && action == GLFW_PRESS) {
-            a_basic = false;    i=0;
+    else if ( a==1 && key == GLFW_KEY_A && action == GLFW_PRESS || i==1 && key == GLFW_KEY_A && action == GLFW_REPEAT) {
+            a_basic = false;    a=0;
     }
 
     // color
-    if (i==0 && key == GLFW_KEY_R && action == GLFW_PRESS) {
-        red_value2 = 1.0;  i+=1;
+    if (c==0 && key == GLFW_KEY_R && action == GLFW_PRESS) {
+        red_value2 = 1.0;  c+=1;
     }
     else if (i==1 && key == GLFW_KEY_R && action == GLFW_PRESS) {
-        red_value2 = 0.0; i=0;
+        red_value2 = 0.0; c=0;
     }
 
-    else if (i==0 && key == GLFW_KEY_G && action == GLFW_PRESS) {
-        green_value2 = 1.0;  i+=1;
+    else if (c==0 && key == GLFW_KEY_G && action == GLFW_PRESS) {
+        green_value2 = 1.0;  c+=1;
     }
-    else if (i==1 && key == GLFW_KEY_G && action == GLFW_PRESS) { 
-        green_value2 = 0.0;  i=0;
+    else if (c==1 && key == GLFW_KEY_G && action == GLFW_PRESS) { 
+        green_value2 = 0.0;  c=0;
     }
 
-    else if (i==0 && key == GLFW_KEY_B && action == GLFW_PRESS) {
-        blue_value2 = 1.0;   i+=1;
+    else if (c==0 && key == GLFW_KEY_B && action == GLFW_PRESS) {
+        blue_value2 = 1.0;   c+=1;
     }
-    else if (i==1 && key == GLFW_KEY_B && action == GLFW_PRESS) {
-        blue_value2 = 0.0;   i=0;
+    else if (c==1 && key == GLFW_KEY_B && action == GLFW_PRESS) {
+        blue_value2 = 0.0;   c=0;
     }
 
     // incrementa y disminuye velocidad
-    // if (i=0 && key == GLFW_KEY_I && action == GLFW_PRESS) {
-    //     inc += 0.02; i=1;
-    // }
-    // else if (i=1 && key == GLFW_KEY_I && action == GLFW_PRESS) {
-    //     inc -= 0.02; i=0;
-    // }
+    if (i=0 && key == GLFW_KEY_I && action == GLFW_PRESS) {
+        inc += 0.02; i=1;
+    }
+    else if (i=1 && key == GLFW_KEY_I && action == GLFW_PRESS) {
+        inc -= 0.02; i=0;
+    }
 
     // incrementa y disminuye angulo
-    // if (i=0 && key == GLFW_KEY_D && action == GLFW_PRESS) {
-    //     angle += 1; i+=1;
-    // }
-    // if (i=1 && key == GLFW_KEY_D && action == GLFW_PRESS) {
-    //     angle -= 1; i=0;
-    // }
+    if (g=0 && key == GLFW_KEY_D && action == GLFW_PRESS) {
+        angle += 1; g+=1;
+    }
+    if (g=1 && key == GLFW_KEY_D && action == GLFW_PRESS) {
+        angle -= 1; g=0;
+    }
 }
